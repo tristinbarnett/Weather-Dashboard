@@ -8,3 +8,25 @@ h1 {
 .input-group {
     margin-bottom: 15px;
 }
+.card {
+    width:100%;
+}
+.green {
+    background-color: lightgreen;
+}
+.yellow {
+    background-color: yellow;
+}
+.orange {
+    background-color: orange;
+}
+.red {
+    background-color: red;
+}
+.purple {
+    background-color: purple;
+}
+.fiveDay{    
+    background-color: royalblue;
+    margin: 15px;
+}
