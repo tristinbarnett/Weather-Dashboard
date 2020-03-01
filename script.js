@@ -21,7 +21,7 @@ function getItems() {
 getItems();
 
 function getData() {
-    var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=6ae2d75d12546b3e67c1a101fdff49bc`
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=6ae2d75d12546b3e67c1a101fdff49bc"
     cardBody.empty();
     $("#weeklyForecast").empty();
 
@@ -36,7 +36,7 @@ function getData() {
         cardBody.prepend(name);
         cardBody.append($("<img>").attr("src", iconURL));
 
-    
+
 
         var temp = Math.round((response.main.temp - 273.15) * 1.80 + 32);
         cardBody.append($("<p>").html("Temperature: " + temp + " &#176;F"));
@@ -79,18 +79,18 @@ function getData() {
                 var newColumn = $("<div>").attr("class", "col fiveDay bg-primary text-white");
                 $("#weeklyForecast").append(newColumn);
 
-                var myDate = new Date(response.list[i*8].dt * 1000);
+                var myDate = new Date(response.list[i * 8].dt * 1000);
                 console.log(myDate.toLocaleDateString());
                 newColumn.append($("<h4>").html(myDate.toLocaleDateString()));
 
-                var iconCode = response.list[i*8].weather[0].icon;
+                var iconCode = response.list[i * 8].weather[0].icon;
                 var iconURL = "http://openweathermap.org/img/w/" + iconCode + ".png";
                 newColumn.append($("<img>").attr("src", iconURL));
 
-                var temp = Math.round((response.list[i*8].main.temp - 273.15) * 1.80 + 32);
+                var temp = Math.round((response.list[i * 8].main.temp - 273.15) * 1.80 + 32);
                 newColumn.append($("<p>").html("Temp: " + temp + " &#176;F"));
 
-                var humidity = response.list[i*8].main.humidity;
+                var humidity = response.list[i * 8].main.humidity;
                 newColumn.append($("<p>").html("Humidity: " + humidity + "&#37;"));
 
             }
