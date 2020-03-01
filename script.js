@@ -1,17 +1,41 @@
 var city;
 var cardBody = $(".card-body");
 var cardTitle = $(".card-title");
+var searchHistory = [];
+
+function getItems() {
+    var storedCities = JSON.parse(localStorage.getItem("searchHistory"));
+    console.log(storedCities);
+    if (storedCities !== null) {
+        searchHistory = storedCities;
+    };
+    
+    for (i = 0; i < searchHistory.length; i++) {
+        cityButton = $("<a>").attr({
+            class: "list-group-item list-group-item-action",
+            href: "#"
+        });
+        cityButton.text(searchHistory[i]);
+        $(".list-group").append(cityButton);
+    }
+};
+getItems();
 
 $("#searchCity").click(function (event) {
 
     city = $("#city").val();
+    searchHistory.push(city);
+    localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=6ae2d75d12546b3e67c1a101fdff49bc"
+
     var cityButton = $("<a>").attr({
         class: "list-group-item list-group-item-action",
         href: "#"
     });
     cityButton.text(city);
     $(".list-group").append(cityButton);
+
 
     $.ajax({
         url: queryURL,
@@ -80,4 +104,6 @@ $("#searchCity").click(function (event) {
             }
         })
     })
+
+
 })
