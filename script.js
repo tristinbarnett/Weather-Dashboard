@@ -49,7 +49,7 @@ function getData() {
         var lon = response.coord.lon;
 
         $.ajax({
-            url: "http://api.openweathermap.org/data/2.5/uvi?appid=6ae2d75d12546b3e67c1a101fdff49bc&lat=" + lat + "&lon=" + lon,
+            url: "https://api.openweathermap.org/data/2.5/uvi?appid=6ae2d75d12546b3e67c1a101fdff49bc&lat=" + lat + "&lon=" + lon,
             method: "GET"
         }).then(function (response) {
             cardBody.append($("<p>").html("UV Index: <span>" + response.value + "</span>"));
@@ -70,7 +70,7 @@ function getData() {
             };
         })
         $.ajax({
-            url: "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=6ae2d75d12546b3e67c1a101fdff49bc",
+            url: "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=6ae2d75d12546b3e67c1a101fdff49bc",
             method: "GET"
         }).then(function (response) {
             console.log(response);
